@@ -1,4 +1,4 @@
-const Product = require('../models/Product');
+const Product = require('../models/product');
 
 function bufferToDataUrl(buffer, mimeType) {
   const base64String = buffer.toString('base64');

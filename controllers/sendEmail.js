@@ -1,5 +1,5 @@
 const SibApiV3Sdk = require('sib-api-v3-sdk');
-const User = require('../models/User');
+const User = require('../models/user');
 require("dotenv").config();
 
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
