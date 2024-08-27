@@ -1,6 +1,5 @@
 
 const User = require('../models/user');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
@@ -14,15 +13,14 @@ exports.register = async (req, res) => {
 
     // user role
     let role = 'user';
-    if (email === 'karan@gmail.com') {
+    if (email === 'vishal@gmail.com') {
       role = 'admin';
     }
-    const hashedPassword = await bcrypt.hash(password, 15);
 
     const newUser = new User({
       name: name,
       email: email,
-      password: hashedPassword,
+      password: password,
       role: role,
     });
 
@@ -42,7 +40,7 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ success: false, message: 'Invalid email or password' });
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = user.password;
     if (!isMatch) return res.status(400).json({ success: false, message: 'Invalid email or password' });
 
     // Generate a token 
