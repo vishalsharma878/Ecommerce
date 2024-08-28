@@ -8,7 +8,7 @@ const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const bodyParser = require('body-parser');
 
-app.use(cors())
+app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
 app.use(userRoutes);
